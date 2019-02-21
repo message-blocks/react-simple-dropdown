@@ -5,12 +5,19 @@ class DropdownContent extends Component {
   render () {
     const { children, className, ...dropdownContentProps } = this.props;
     dropdownContentProps.className = `dropdown__content ${className}`;
-
-    return (
-      <div {...dropdownContentProps}>
-        {children}
-      </div>
-    );
+    if (dropdownContentProps.useUl) {
+      return (
+        <ul {...dropdownContentProps}>
+          {children}
+        </ul>
+      );      
+    } else {
+      return (
+        <div {...dropdownContentProps}>
+          {children}
+        </div>
+      );
+    }
   }
 }
 
