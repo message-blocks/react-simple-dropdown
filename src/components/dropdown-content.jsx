@@ -4,13 +4,15 @@ import PropTypes from 'prop-types';
 class DropdownContent extends Component {
   render () {
     const { children, className, ...dropdownContentProps } = this.props;
+    let useUl = dropdownContentProps.useUl;
     dropdownContentProps.className = `dropdown__content ${className}`;
-    if (dropdownContentProps.useUl) {
+    delete dropdownContentProps.useUl;
+    if (useUl) {
       return (
         <ul {...dropdownContentProps}>
           {children}
         </ul>
-      );      
+      );
     } else {
       return (
         <div {...dropdownContentProps}>
